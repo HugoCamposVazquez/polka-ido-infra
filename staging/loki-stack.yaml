@@ -29,7 +29,7 @@ promtail:
         - role: pod
       relabel_configs:
         - action: keep
-          regex: revuto-backend
+          regex: ryu
           source_labels:
             - __meta_kubernetes_pod_label_app_kubernetes_io_name
         - source_labels:
