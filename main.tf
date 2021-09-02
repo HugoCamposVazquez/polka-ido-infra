@@ -17,6 +17,9 @@ terraform {
   }
 }
 
-# module "staging" {
-#   source = "./staging"
-# }
+module "staging" {
+  source = "./staging"
+
+  domain = "ryu.nodefactory.io"
+  k8_cluster_name = digitalocean_kubernetes_cluster.ryu_staging.name
+}

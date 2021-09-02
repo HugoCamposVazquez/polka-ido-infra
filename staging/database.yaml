@@ -1,0 +1,6 @@
+image:
+  tag: 12.8.0-debian-10-r20
+postgresqlSharedPreloadLibraries: "pgaudit,uuid-ossp"
+initdbScripts:
+    setup1.sql: |
+      CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
