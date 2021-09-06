@@ -12,10 +12,10 @@ promtail:
         - cri: {}
         - multiline:
             # Identify timestamps as first line of a multiline block. Note the string should be in single quotes.
-            firstline: '^\d{4}-\d{2}-\d{2}T\d{1,2}:\d{2}:\d{2}'
+            firstline: '^\[.*\]'
             max_wait_time: 2s
         - regex:
-            expression: '(?P<time>\S+?) \[(?P<module>.*)\] (?P<level>.+?)\:[\\n\\r\s]*(?P<content>.*)'
+            expression: '\[(?P<time>\S+?)\] (?P<level>.+?) \((?P<module>.*)\)\:[\\n\\r\s]*(?P<content>.*)'
         - labels:
             module:
             level:
@@ -29,7 +29,7 @@ promtail:
         - role: pod
       relabel_configs:
         - action: keep
-          regex: ryu
+          regex: ryu-backend-chart
           source_labels:
             - __meta_kubernetes_pod_label_app_kubernetes_io_name
         - source_labels:
